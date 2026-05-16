@@ -1,774 +1,715 @@
-```html
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Кадровое агентство «Фортпост» — Официальное трудоустройство</title>
-<style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
-
-:root {
-  --bg: #0A0F1E;
-  --bg-light: #131A30;
-  --bg-card: #161D35;
-  --gold: #FFD700;
-  --gold-dark: #C9A700;
-  --white: #FFFFFF;
-  --gray: #A0A8B8;
-  --border: #1F2845;
-}
-
-html { scroll-behavior: smooth; }
-
-body {
-  font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
-  background: var(--bg);
-  color: var(--white);
-  line-height: 1.6;
-  overflow-x: hidden;
-}
-
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-
-/* HEADER */
-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background: rgba(10, 15, 30, 0.95);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--border);
-  z-index: 1000;
-  padding: 15px 0;
-}
-
-.header-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 15px;
-}
-
-.logo {
-  font-size: 1.6rem;
-  font-weight: 900;
-  color: var(--gold);
-  letter-spacing: 3px;
-  text-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
-}
-
-.nav {
-  display: flex;
-  gap: 28px;
-}
-
-.nav a {
-  color: var(--white);
-  text-decoration: none;
-  font-size: 0.95rem;
-  font-weight: 500;
-  transition: color 0.3s;
-}
-
-.nav a:hover { color: var(--gold); }
-
-.phones {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  font-size: 0.9rem;
-}
-
-.phones a {
-  color: var(--white);
-  text-decoration: none;
-  font-weight: 600;
-  transition: color 0.3s;
-}
-
-.phones a:hover { color: var(--gold); }
-
-/* HERO */
-.hero {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-  padding: 120px 20px 60px;
-  background:
-    radial-gradient(circle at 20% 50%, rgba(255,215,0,0.08) 0%, transparent 50%),
-    radial-gradient(circle at 80% 30%, rgba(255,215,0,0.05) 0%, transparent 50%),
-    var(--bg);
-}
-
-.hero::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(255,215,0,0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,215,0,0.04) 1px, transparent 1px);
-  background-size: 60px 60px;
-  mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
-}
-
-.hero::after {
-  content: '';
-  position: absolute;
-  width: 600px; height: 600px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(255,215,0,0.12) 0%, transparent 70%);
-  filter: blur(40px);
-  top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
-  pointer-events: none;
-}
-
-.hero-content { position: relative; z-index: 2; max-width: 900px; }
-
-.hero-label {
-  display: inline-block;
-  padding: 8px 20px;
-  border: 1px solid var(--gold);
-  border-radius: 30px;
-  color: var(--gold);
-  font-size: 0.85rem;
-  letter-spacing: 2px;
-  margin-bottom: 30px;
-  text-transform: uppercase;
-}
-
-.hero-amount {
-  font-size: clamp(2.8rem, 8vw, 6rem);
-  font-weight: 900;
-  color: var(--gold);
-  letter-spacing: 2px;
-  line-height: 1.1;
-  text-shadow: 0 0 40px rgba(255,215,0,0.4);
-  margin-bottom: 10px;
-}
-
-.hero-subtitle {
-  font-size: 1.2rem;
-  color: var(--gray);
-  margin-bottom: 25px;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-}
-
-.hero-text {
-  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
-  color: var(--white);
-  margin-bottom: 40px;
-  font-weight: 500;
-}
-
-.btn {
-  display: inline-block;
-  padding: 18px 50px;
-  background: linear-gradient(135deg, var(--gold), var(--gold-dark));
-  color: #0A0F1E;
-  text-decoration: none;
-  font-weight: 700;
-  font-size: 1.05rem;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: transform 0.3s, box-shadow 0.3s;
-  box-shadow: 0 10px 30px rgba(255,215,0,0.3);
-}
-
-.btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 15px 40px rgba(255,215,0,0.5);
-}
-
-/* SECTIONS */
-section { padding: 90px 0; position: relative; }
-
-.section-title {
-  font-size: clamp(1.8rem, 4vw, 2.6rem);
-  text-align: center;
-  margin-bottom: 15px;
-  font-weight: 800;
-  letter-spacing: 1px;
-}
-
-.section-title span { color: var(--gold); }
-
-.section-subtitle {
-  text-align: center;
-  color: var(--gray);
-  margin-bottom: 60px;
-  font-size: 1.05rem;
-}
-
-/* ADVANTAGES */
-.advantages {
-  background: var(--bg-light);
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-}
-
-.cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 30px;
-}
-
-.card {
-  background: var(--bg-card);
-  padding: 40px 30px;
-  border-radius: 8px;
-  border: 1px solid var(--border);
-  text-align: center;
-  transition: transform 0.4s, border-color 0.4s, box-shadow 0.4s;
-  position: relative;
-  overflow: hidden;
-}
-
-.card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 3px;
-  background: linear-gradient(90deg, transparent, var(--gold), transparent);
-  transform: translateX(-100%);
-  transition: transform 0.6s;
-}
-
-.card:hover {
-  transform: translateY(-8px);
-  border-color: var(--gold);
-  box-shadow: 0 20px 50px rgba(0,0,0,0.4);
-}
-
-.card:hover::before { transform: translateX(100%); }
-
-.card-icon {
-  font-size: 2.5rem;
-  color: var(--gold);
-  margin-bottom: 20px;
-  font-weight: 900;
-}
-
-.card-title {
-  font-size: 1.3rem;
-  margin-bottom: 12px;
-  color: var(--gold);
-  font-weight: 700;
-}
-
-.card-text {
-  color: var(--gray);
-  font-size: 0.98rem;
-}
-
-/* REGIONS */
-.regions-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px;
-}
-
-.region {
-  background: var(--bg-card);
-  padding: 28px 30px;
-  border-radius: 6px;
-  border-left: 3px solid var(--gold);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  transition: background 0.3s, transform 0.3s;
-}
-
-.region:hover {
-  background: #1B2342;
-  transform: translateX(5px);
-}
-
-.region-name {
-  font-size: 1.1rem;
-  font-weight: 600;
-}
-
-.region-amount {
-  color: var(--gold);
-  font-size: 1.2rem;
-  font-weight: 800;
-  white-space: nowrap;
-}
-
-/* SPECIALTIES */
-.specialties { background: var(--bg-light); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-
-.spec-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 20px;
-}
-
-.spec-item {
-  background: var(--bg-card);
-  padding: 35px 20px;
-  text-align: center;
-  border-radius: 6px;
-  border: 1px solid var(--border);
-  transition: all 0.3s;
-}
-
-.spec-item:hover {
-  border-color: var(--gold);
-  background: #1B2342;
-}
-
-.spec-item-title {
-  color: var(--gold);
-  font-size: 1.1rem;
-  font-weight: 700;
-}
-
-/* FAQ */
-.faq-list { max-width: 850px; margin: 0 auto; }
-
-.faq-item {
-  background: var(--bg-card);
-  margin-bottom: 15px;
-  border-radius: 6px;
-  border: 1px solid var(--border);
-  overflow: hidden;
-  transition: border-color 0.3s;
-}
-
-.faq-item:hover { border-color: var(--gold); }
-
-.faq-question {
-  padding: 22px 28px;
-  cursor: pointer;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-weight: 600;
-  font-size: 1.05rem;
-  user-select: none;
-}
-
-.faq-toggle {
-  color: var(--gold);
-  font-size: 1.5rem;
-  transition: transform 0.3s;
-}
-
-.faq-item.active .faq-toggle { transform: rotate(45deg); }
-
-.faq-answer {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.4s ease, padding 0.4s ease;
-  padding: 0 28px;
-  color: var(--gray);
-}
-
-.faq-item.active .faq-answer {
-  max-height: 200px;
-  padding: 0 28px 22px;
-}
-
-/* FORM */
-.form-section {
-  background: var(--bg-light);
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-}
-
-.form {
-  max-width: 600px;
-  margin: 0 auto;
-  background: var(--bg-card);
-  padding: 45px 40px;
-  border-radius: 10px;
-  border: 1px solid var(--border);
-  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-}
-
-.form-group { margin-bottom: 20px; }
-
-.form-group label {
-  display: block;
-  margin-bottom: 8px;
-  color: var(--gray);
-  font-size: 0.9rem;
-}
-
-.form-group input,
-.form-group select {
-  width: 100%;
-  padding: 14px 16px;
-  background: var(--bg);
-  border: 1px solid var(--border);
-  border-radius: 5px;
-  color: var(--white);
-  font-size: 1rem;
-  font-family: inherit;
-  transition: border-color 0.3s;
-}
-
-.form-group input:focus,
-.form-group select:focus {
-  outline: none;
-  border-color: var(--gold);
-}
-
-.form-group select option { background: var(--bg); color: var(--white); }
-
-.checkbox-group {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  margin-bottom: 25px;
-}
-
-.checkbox-group input {
-  width: 18px;
-  height: 18px;
-  margin-top: 3px;
-  accent-color: var(--gold);
-  cursor: pointer;
-  flex-shrink: 0;
-}
-
-.checkbox-group label {
-  color: var(--gray);
-  font-size: 0.88rem;
-  cursor: pointer;
-  line-height: 1.5;
-}
-
-.form .btn { width: 100%; }
-
-/* CONTACTS */
-.contacts-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 25px;
-  max-width: 900px;
-  margin: 0 auto;
-}
-
-.contact-card {
-  background: var(--bg-card);
-  padding: 35px 25px;
-  border-radius: 8px;
-  border: 1px solid var(--border);
-  text-align: center;
-  transition: all 0.3s;
-}
-
-.contact-card:hover { border-color: var(--gold); transform: translateY(-5px); }
-
-.contact-label {
-  color: var(--gray);
-  font-size: 0.85rem;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  margin-bottom: 10px;
-}
-
-.contact-value {
-  color: var(--gold);
-  font-size: 1.2rem;
-  font-weight: 700;
-  text-decoration: none;
-  display: block;
-}
-
-.contact-value:hover { color: var(--white); }
-
-/* FOOTER */
-footer {
-  background: #060A18;
-  padding: 30px 0;
-  text-align: center;
-  border-top: 1px solid var(--border);
-  color: var(--gray);
-  font-size: 0.9rem;
-}
-
-/* ANIMATIONS */
-.fade-in {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-.fade-in.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* MOBILE */
-@media (max-width: 768px) {
-  .header-inner { flex-direction: column; align-items: center; }
-  .nav { gap: 18px; flex-wrap: wrap; justify-content: center; font-size: 0.85rem; }
-  .nav a { font-size: 0.85rem; }
-  .phones { text-align: center; }
-  .hero { padding-top: 200px; min-height: auto; padding-bottom: 80px; }
-  section { padding: 60px 0; }
-  .form { padding: 30px 22px; }
-  .region { padding: 22px; }
-}
-
-@media (max-width: 480px) {
-  .nav { gap: 14px; }
-  .logo { font-size: 1.3rem; }
-  .btn { padding: 16px 30px; font-size: 0.95rem; }
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Фортпост | Профессиональное трудоустройство</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0A0F1E;
+            --accent-gold: #FFD700;
+            --text-primary: #FFFFFF;
+            --text-secondary: #A0A8B8;
+            --text-tertiary: #C0C8D8;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            --transition: all 0.4s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(10, 15, 30, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 2rem;
+            border-bottom: 1px solid rgba(255, 215, 0, 0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--accent-gold);
+            letter-spacing: 2px;
+        }
+
+        .contacts {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .contact-item .icon {
+            color: var(--accent-gold);
+            margin-bottom: 0.2rem;
+        }
+
+        .contact-text {
+            font-size: 0.85rem;
+            color: var(--text-tertiary);
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .contact-text:hover { color: var(--accent-gold); }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-menu a:hover {
+            color: var(--accent-gold);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 8rem 2rem 2rem;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, rgba(10, 15, 30, 0.9), rgba(20, 30, 50, 0.8));
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                radial-gradient(circle at 20% 30%, rgba(255, 215, 0, 0.05) 0.5px, transparent 0.5px),
+                linear-gradient(45deg, transparent 45%, rgba(255, 215, 0, 0.03) 50%, transparent 55%),
+                linear-gradient(-45deg, transparent 45%, rgba(255, 215, 0, 0.03) 50%, transparent 55%);
+            background-size: 60px 60px, 100px 100px, 150px 150px;
+            pointer-events: none;
+        }
+
+        .hero-content {
+            z-index: 2;
+            max-width: 800px;
+            position: relative;
+        }
+
+        .hero-number {
+            font-size: clamp(3rem, 8vw, 7rem);
+            font-weight: 700;
+            color: var(--accent-gold);
+            margin-bottom: 1rem;
+            line-height: 0.9;
+            letter-spacing: -0.02em;
+            text-shadow: 0 0 40px rgba(255, 215, 0, 0.3);
+        }
+
+        .hero-title {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .hero-text {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: var(--text-tertiary);
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-gold);
+            color: var(--bg-dark);
+            padding: 1rem 2.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+            border: none;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
+        }
+
+        /* Advantages Section */
+        .advantages {
+            padding: 6rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            margin-bottom: 4rem;
+            color: var(--text-primary);
+        }
+
+        .section-title span { color: var(--accent-gold); }
+
+        .advantages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .advantage-card {
+            background-color: rgba(20, 30, 50, 0.5);
+            padding: 2rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent-gold);
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .advantage-card:hover {
+            transform: translateY(-5px);
+            background-color: rgba(20, 30, 50, 0.7);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .advantage-number {
+            font-size: 2.2rem;
+            color: var(--accent-gold);
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .advantage-card p {
+            color: var(--text-tertiary);
+        }
+
+        /* Salaries Section */
+        .salaries {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto 4rem;
+            background-color: rgba(20, 30, 50, 0.3);
+            border-radius: 12px;
+        }
+
+        .salaries-title {
+            text-align: center;
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            margin-bottom: 2rem;
+        }
+
+        .salaries-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
+        }
+
+        .salary-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 1.5rem;
+            background-color: rgba(30, 40, 60, 0.5);
+            border-radius: 8px;
+            font-size: 1.05rem;
+            border-left: 3px solid var(--accent-gold);
+            transition: var(--transition);
+        }
+
+        .salary-item:hover {
+            background-color: rgba(30, 40, 60, 0.8);
+            transform: translateX(5px);
+        }
+
+        .salary-highlight {
+            font-weight: 700;
+            color: var(--accent-gold);
+            white-space: nowrap;
+        }
+
+        /* FAQ Section */
+        .faq {
+            padding: 6rem 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background-color: rgba(20, 30, 50, 0.5);
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            padding: 1.5rem;
+            border: 1px solid rgba(255, 215, 0, 0.1);
+            transition: var(--transition);
+        }
+
+        .faq-item:hover { border-color: rgba(255, 215, 0, 0.4); }
+
+        .faq-question {
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+        }
+
+        .faq-toggle {
+            color: var(--accent-gold);
+            font-size: 1.5rem;
+            transition: transform 0.3s;
+        }
+
+        .faq-item.open .faq-toggle { transform: rotate(45deg); }
+
+        .faq-answer {
+            display: none;
+            color: var(--text-tertiary);
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 215, 0, 0.1);
+        }
+
+        .faq-item.open .faq-answer { display: block; }
+
+        /* Application Form */
+        .application {
+            padding: 4rem 2rem;
+            max-width: 700px;
+            margin: 0 auto 4rem;
+            background-color: rgba(20, 30, 50, 0.3);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 215, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .form-input,
+        .form-select {
+            width: 100%;
+            padding: 1rem;
+            background-color: rgba(30, 40, 60, 0.7);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            border-radius: 4px;
+            color: var(--text-primary);
+            font-size: 1rem;
+            font-family: inherit;
+            transition: var(--transition);
+        }
+
+        .form-input:focus,
+        .form-select:focus {
+            outline: none;
+            border-color: var(--accent-gold);
+        }
+
+        .form-select { cursor: pointer; }
+        .form-select option { background-color: var(--bg-dark); }
+
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            margin-top: 0.3rem;
+            width: 18px;
+            height: 18px;
+            accent-color: var(--accent-gold);
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+
+        .checkbox-group label {
+            color: var(--text-tertiary);
+            font-size: 0.9rem;
+            cursor: pointer;
+        }
+
+        .application .btn { width: 100%; }
+
+        /* Contacts Section */
+        .contacts-section {
+            padding: 6rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contacts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-card {
+            background-color: rgba(20, 30, 50, 0.5);
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid rgba(255, 215, 0, 0.1);
+            transition: var(--transition);
+        }
+
+        .contact-card:hover {
+            border-color: var(--accent-gold);
+            transform: translateY(-5px);
+        }
+
+        .contact-icon {
+            color: var(--accent-gold);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-card a {
+            color: var(--accent-gold);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            display: block;
+            margin-top: 0.5rem;
+        }
+
+        .contact-card a:hover { color: var(--text-primary); }
+
+        .contact-label {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: rgba(6, 10, 24, 0.9);
+            padding: 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(255, 215, 0, 0.1);
+        }
+
+        .footer-text {
+            color: var(--text-tertiary);
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .delay-1 { transition-delay: 0.1s; }
+        .delay-2 { transition-delay: 0.3s; }
+        .delay-3 { transition-delay: 0.5s; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content { justify-content: center; }
+            .nav-menu { gap: 1rem; font-size: 0.9rem; flex-wrap: wrap; justify-content: center; }
+            .hero { padding-top: 12rem; }
+            .application { padding: 2rem 1.5rem; }
+        }
+    </style>
 </head>
 <body>
 
-<header>
-  <div class="container header-inner">
-    <div class="logo">ФОРТПОСТ</div>
-    <nav class="nav">
-      <a href="#about">О нас</a>
-      <a href="#payments">Выплаты</a>
-      <a href="#specialties">Специальности</a>
-      <a href="#contacts">Контакты</a>
-    </nav>
-    <div class="phones">
-      <a href="tel:+70000000000">+7 XXX XXX-XX-XX</a>
-      <a href="tel:+70000000000">+7 XXX XXX-XX-XX</a>
-    </div>
-  </div>
-</header>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">ФОРТПОСТ</div>
+            <div class="contacts">
+                <div class="contact-item">
+                    <div class="icon">📞</div>
+                    <a href="tel:+70000000000" class="contact-text">+7 XXX XXX-XX-XX</a>
+                </div>
+                <div class="contact-item">
+                    <div class="icon">📞</div>
+                    <a href="tel:+70000000000" class="contact-text">+7 XXX XXX-XX-XX</a>
+                </div>
+            </div>
+            <nav class="nav-menu">
+                <a href="#about">О нас</a>
+                <a href="#salaries">Выплаты</a>
+                <a href="#specialties">Специальности</a>
+                <a href="#contacts">Контакты</a>
+            </nav>
+        </div>
+    </header>
 
-<section class="hero" id="about">
-  <div class="hero-content">
-    <div class="hero-label">Официальное трудоустройство</div>
-    <div class="hero-amount">4 500 000 ₽</div>
-    <div class="hero-subtitle">единовременная выплата</div>
-    <div class="hero-text">Зарплата от <strong style="color:var(--gold)">210 000 ₽</strong> + полный социальный пакет</div>
-    <a href="#form" class="btn">Оставить заявку</a>
-  </div>
-</section>
+    <!-- Hero -->
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <div class="hero-number fade-in delay-1">4 500 000 ₽</div>
+            <div class="hero-title fade-in delay-2">единовременная выплата</div>
+            <div class="hero-text fade-in delay-3">Зарплата от <strong style="color:var(--accent-gold)">210 000 ₽</strong> + полный социальный пакет</div>
+            <a href="#application" class="btn fade-in delay-3">Оставить заявку</a>
+        </div>
+    </section>
 
-<section class="advantages">
-  <div class="container">
-    <h2 class="section-title fade-in">Наши <span>преимущества</span></h2>
-    <p class="section-subtitle fade-in">Гарантии, проверенные временем</p>
-    <div class="cards">
-      <div class="card fade-in">
-        <div class="card-icon">4.5 млн ₽</div>
-        <div class="card-title">Единовременная выплата</div>
-        <div class="card-text">При подписании контракта — гарантированная выплата на руки</div>
-      </div>
-      <div class="card fade-in">
-        <div class="card-icon">★</div>
-        <div class="card-title">Социальный пакет</div>
-        <div class="card-text">Жильё, льготная ипотека, медицина, страхование, льготы для семьи</div>
-      </div>
-      <div class="card fade-in">
-        <div class="card-icon">✓</div>
-        <div class="card-title">Востребованные специальности</div>
-        <div class="card-text">Водители, операторы БПЛА, связисты, медики и другие направления</div>
-      </div>
-    </div>
-  </div>
-</section>
+    <!-- Advantages -->
+    <section class="advantages" id="about">
+        <h2 class="section-title fade-in">Наши <span>преимущества</span></h2>
+        <div class="advantages-grid">
+            <div class="advantage-card fade-in delay-1">
+                <div class="advantage-number">4.5 млн ₽</div>
+                <p>Единовременная выплата при подписании контракта</p>
+            </div>
+            <div class="advantage-card fade-in delay-2">
+                <div class="advantage-number">🏡</div>
+                <p>Социальный пакет: жильё, льготная ипотека, медицина</p>
+            </div>
+            <div class="advantage-card fade-in delay-3">
+                <div class="advantage-number">🛠️</div>
+                <p>Широкий спектр специальностей: водители, операторы БПЛА, связисты, медики</p>
+            </div>
+        </div>
+    </section>
 
-<section id="payments">
-  <div class="container">
-    <h2 class="section-title fade-in">Выплаты по <span>регионам</span></h2>
-    <p class="section-subtitle fade-in">Размер единовременной выплаты в вашем регионе</p>
-    <div class="regions-grid">
-      <div class="region fade-in"><span class="region-name">Москва</span><span class="region-amount">2 560 000 ₽</span></div>
-      <div class="region fade-in"><span class="region-name">Санкт-Петербург</span><span class="region-amount">4 500 000 ₽</span></div>
-      <div class="region fade-in"><span class="region-name">Краснодар</span><span class="region-amount">3 400 000 ₽</span></div>
-      <div class="region fade-in"><span class="region-name">Татарстан</span><span class="region-amount">2 900 000 ₽</span></div>
-      <div class="region fade-in"><span class="region-name">Нижний Новгород</span><span class="region-amount">2 100 000 ₽</span></div>
-      <div class="region fade-in"><span class="region-name">Тула</span><span class="region-amount">2 000 000 ₽</span></div>
-    </div>
-  </div>
-</section>
+    <!-- Salaries -->
+    <section class="salaries" id="salaries">
+        <h2 class="salaries-title">Единовременные выплаты <span style="color:var(--accent-gold)">по регионам</span></h2>
+        <div class="salaries-grid">
+            <div class="salary-item"><span>Москва</span><span class="salary-highlight">2 560 000 ₽</span></div>
+            <div class="salary-item"><span>Санкт-Петербург</span><span class="salary-highlight">4 500 000 ₽</span></div>
+            <div class="salary-item"><span>Краснодар</span><span class="salary-highlight">3 400 000 ₽</span></div>
+            <div class="salary-item"><span>Татарстан</span><span class="salary-highlight">2 900 000 ₽</span></div>
+            <div class="salary-item"><span>Нижний Новгород</span><span class="salary-highlight">2 100 000 ₽</span></div>
+            <div class="salary-item"><span>Тула</span><span class="salary-highlight">2 000 000 ₽</span></div>
+        </div>
+    </section>
 
-<section class="specialties" id="specialties">
-  <div class="container">
-    <h2 class="section-title fade-in">Открытые <span>специальности</span></h2>
-    <p class="section-subtitle fade-in">Обучение и сопровождение на каждом этапе</p>
-    <div class="spec-grid">
-      <div class="spec-item fade-in"><div class="spec-item-title">Водители</div></div>
-      <div class="spec-item fade-in"><div class="spec-item-title">Операторы БПЛА</div></div>
-      <div class="spec-item fade-in"><div class="spec-item-title">Связисты</div></div>
-      <div class="spec-item fade-in"><div class="spec-item-title">Медики</div></div>
-    </div>
-  </div>
-</section>
+    <!-- Specialties -->
+    <section class="advantages" id="specialties">
+        <h2 class="section-title fade-in">Открытые <span>специальности</span></h2>
+        <div class="advantages-grid">
+            <div class="advantage-card fade-in delay-1">
+                <div class="advantage-number">🚗</div>
+                <p>Водители различных категорий</p>
+            </div>
+            <div class="advantage-card fade-in delay-2">
+                <div class="advantage-number">🛸</div>
+                <p>Операторы БПЛА и наземных комплексов</p>
+            </div>
+            <div class="advantage-card fade-in delay-3">
+                <div class="advantage-number">📡</div>
+                <p>Связисты и операторы систем связи</p>
+            </div>
+            <div class="advantage-card fade-in delay-3">
+                <div class="advantage-number">⚕️</div>
+                <p>Медики и санитарный персонал</p>
+            </div>
+        </div>
+    </section>
 
-<section>
-  <div class="container">
-    <h2 class="section-title fade-in">Часто задаваемые <span>вопросы</span></h2>
-    <p class="section-subtitle fade-in">Ответы на самые популярные вопросы</p>
-    <div class="faq-list">
-      <div class="faq-item fade-in">
-        <div class="faq-question">Нужен ли опыт работы?<span class="faq-toggle">+</span></div>
-        <div class="faq-answer"><p>Нет, опыт не обязателен. Мы предоставляем полное обучение по всем направлениям.</p></div>
-      </div>
-      <div class="faq-item fade-in">
-        <div class="faq-question">Можно, если не служил?<span class="faq-toggle">+</span></div>
-        <div class="faq-answer"><p>Да, можно. Отсутствие службы в армии не является препятствием для трудоустройства.</p></div>
-      </div>
-      <div class="faq-item fade-in">
-        <div class="faq-question">Какие документы нужны?<span class="faq-toggle">+</span></div>
-        <div class="faq-answer"><p>Паспорт, СНИЛС, ИНН, военный билет (если есть). Полный список документов уточнит наш специалист.</p></div>
-      </div>
-      <div class="faq-item fade-in">
-        <div class="faq-question">Помогаете иногородним?<span class="faq-toggle">+</span></div>
-        <div class="faq-answer"><p>Да, мы компенсируем стоимость проезда и предоставляем жильё на время оформления.</p></div>
-      </div>
-      <div class="faq-item fade-in">
-        <div class="faq-question">Как быстро можно оформиться?<span class="faq-toggle">+</span></div>
-        <div class="faq-answer"><p>Полное оформление занимает от 1 до 3 дней при наличии всех необходимых документов.</p></div>
-      </div>
-    </div>
-  </div>
-</section>
+    <!-- FAQ -->
+    <section class="faq" id="faq">
+        <h2 class="section-title fade-in">Часто задаваемые <span>вопросы</span></h2>
+        <div class="faq-item fade-in">
+            <div class="faq-question">Нужен ли опыт работы?<span class="faq-toggle">+</span></div>
+            <div class="faq-answer">Нет, опыт не обязателен. Мы проводим полное обучение по всем направлениям.</div>
+        </div>
+        <div class="faq-item fade-in">
+            <div class="faq-question">Можно, если не служил?<span class="faq-toggle">+</span></div>
+            <div class="faq-answer">Да, можно. Отсутствие службы в армии не является препятствием.</div>
+        </div>
+        <div class="faq-item fade-in">
+            <div class="faq-question">Какие документы нужны?<span class="faq-toggle">+</span></div>
+            <div class="faq-answer">Паспорт, СНИЛС, ИНН, военный билет (если есть). Полный список уточнит наш специалист.</div>
+        </div>
+        <div class="faq-item fade-in">
+            <div class="faq-question">Помогаете иногородним?<span class="faq-toggle">+</span></div>
+            <div class="faq-answer">Да, мы компенсируем стоимость проезда и предоставляем жильё на время оформления.</div>
+        </div>
+        <div class="faq-item fade-in">
+            <div class="faq-question">Как быстро можно оформиться?<span class="faq-toggle">+</span></div>
+            <div class="faq-answer">Полное оформление занимает от 1 до 3 дней при наличии всех документов.</div>
+        </div>
+    </section>
 
-<section class="form-section" id="form">
-  <div class="container">
-    <h2 class="section-title fade-in">Оставить <span>заявку</span></h2>
-    <p class="section-subtitle fade-in">Перезвоним в течение 15 минут</p>
-    <form class="form fade-in" id="applicationForm">
-      <div class="form-group">
-        <label for="name">ФИО *</label>
-        <input type="text" id="name" name="name" required placeholder="Иванов Иван Иванович">
-      </div>
-      <div class="form-group">
-        <label for="phone">Телефон *</label>
-        <input type="tel" id="phone" name="phone" required placeholder="+7 (___) ___-__-__">
-      </div>
-      <div class="form-group">
-        <label for="region">Регион *</label>
-        <select id="region" name="region" required>
-          <option value="">Выберите регион</option>
-          <option>Москва</option>
-          <option>Санкт-Петербург</option>
-          <option>Краснодар</option>
-          <option>Татарстан</option>
-          <option>Другой</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label for="specialty">Специальность *</label>
-        <select id="specialty" name="specialty" required>
-          <option value="">Выберите специальность</option>
-          <option>Водитель</option>
-          <option>Оператор БПЛА</option>
-          <option>Связист</option>
-          <option>Медик</option>
-          <option>Другое</option>
-        </select>
-      </div>
-      <div class="checkbox-group">
-        <input type="checkbox" id="consent" required>
-        <label for="consent">Я даю согласие на обработку персональных данных в соответствии с Федеральным законом № 152-ФЗ</label>
-      </div>
-      <button type="submit" class="btn">Отправить заявку</button>
-    </form>
-  </div>
-</section>
+    <!-- Application Form -->
+    <section class="application" id="application">
+        <h2 class="section-title fade-in">Оставить <span>заявку</span></h2>
+        <form id="applicationForm">
+            <div class="form-group">
+                <label for="name">ФИО *</label>
+                <input type="text" id="name" class="form-input" required placeholder="Иванов Иван Иванович">
+            </div>
+            <div class="form-group">
+                <label for="phone">Телефон *</label>
+                <input type="tel" id="phone" class="form-input" required placeholder="+7 (___) ___-__-__">
+            </div>
+            <div class="form-group">
+                <label for="region">Регион *</label>
+                <select id="region" class="form-select" required>
+                    <option value="">Выберите регион</option>
+                    <option>Москва</option>
+                    <option>Санкт-Петербург</option>
+                    <option>Краснодар</option>
+                    <option>Татарстан</option>
+                    <option>Другой</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="specialty">Специальность *</label>
+                <select id="specialty" class="form-select" required>
+                    <option value="">Выберите специальность</option>
+                    <option>Водитель</option>
+                    <option>Оператор БПЛА</option>
+                    <option>Связист</option>
+                    <option>Медик</option>
+                    <option>Другое</option>
+                </select>
+            </div>
+            <div class="checkbox-group">
+                <input type="checkbox" id="consent" required>
+                <label for="consent">Я даю согласие на обработку персональных данных в соответствии с ФЗ № 152-ФЗ</label>
+            </div>
+            <button type="submit" class="btn">Отправить заявку</button>
+        </form>
+    </section>
 
-<section id="contacts">
-  <div class="container">
-    <h2 class="section-title fade-in">Наши <span>контакты</span></h2>
-    <p class="section-subtitle fade-in">Свяжитесь с нами удобным способом</p>
-    <div class="contacts-grid">
-      <div class="contact-card fade-in">
-        <div class="contact-label">Телефон 1</div>
-        <a href="tel:+70000000000" class="contact-value">+7 XXX XXX-XX-XX</a>
-      </div>
-      <div class="contact-card fade-in">
-        <div class="contact-label">Телефон 2</div>
-        <a href="tel:+70000000000" class="contact-value">+7 XXX XXX-XX-XX</a>
-      </div>
-      <div class="contact-card fade-in">
-        <div class="contact-label">Telegram</div>
-        <a href="#" class="contact-value">@fortpost</a>
-      </div>
-      <div class="contact-card fade-in">
-        <div class="contact-label">Сайт</div>
-        <a href="#" class="contact-value">fortpost.ru</a>
-      </div>
-    </div>
-  </div>
-</section>
+    <!-- Contacts -->
+    <section class="contacts-section" id="contacts">
+        <h2 class="section-title fade-in">Наши <span>контакты</span></h2>
+        <div class="contacts-grid">
+            <div class="contact-card fade-in delay-1">
+                <div class="contact-icon">📞</div>
+                <div class="contact-label">Телефон</div>
+                <a href="tel:+70000000000">+7 XXX XXX-XX-XX</a>
+            </div>
+            <div class="contact-card fade-in delay-1">
+                <div class="contact-icon">📞</div>
+                <div class="contact-label">Телефон</div>
+                <a href="tel:+70000000000">+7 XXX XXX-XX-XX</a>
+            </div>
+            <div class="contact-card fade-in delay-2">
+                <div class="contact-icon">✈️</div>
+                <div class="contact-label">Telegram</div>
+                <a href="#">@fortpost</a>
+            </div>
+            <div class="contact-card fade-in delay-3">
+                <div class="contact-icon">🌐</div>
+                <div class="contact-label">Сайт</div>
+                <a href="#">fortpost.ru</a>
+            </div>
+        </div>
+    </section>
 
-<footer>
-  <div class="container">
-    © 2026, Кадровое агентство «Фортпост». Все права защищены.
-  </div>
-</footer>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-text">© 2026, Кадровое агентство «Фортпост». Все права защищены.</div>
+    </footer>
 
-<script>
-// FAQ
-document.querySelectorAll('.faq-question').forEach(q => {
-  q.addEventListener('click', () => {
-    const item = q.parentElement;
-    const wasActive = item.classList.contains('active');
-    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
-    if (!wasActive) item.classList.add('active');
-  });
-});
+    <script>
+        // FAQ accordion
+        document.querySelectorAll('.faq-question').forEach(q => {
+            q.addEventListener('click', () => {
+                const item = q.parentElement;
+                const wasOpen = item.classList.contains('open');
+                document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+                if (!wasOpen) item.classList.add('open');
+            });
+        });
 
-// Form
-document.getElementById('applicationForm').addEventListener('submit', function(e) {
-  e.preventDefault();
-  const consent = document.getElementById('consent');
-  if (!consent.checked) {
-    alert('Необходимо согласие на обработку персональных данных');
-    return;
-  }
-  alert('Спасибо! Ваша заявка принята. Мы свяжемся с вами в течение 15 минут.');
-  this.reset();
-});
+        // Form
+        document.getElementById('applicationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            if (!document.getElementById('consent').checked) {
+                alert('Необходимо согласие на обработку персональных данных');
+                return;
+            }
+            alert('Спасибо! Ваша заявка принята. Мы свяжемся с вами в течение 15 минут.');
+            this.reset();
+        });
 
-// Fade-in on scroll
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-    }
-  });
-}, { threshold: 0.15 });
+        // Fade-in on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.15 });
 
-document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-// Phone mask
-document.getElementById('phone').addEventListener('input', function(e) {
-  let val = e.target.value.replace(/\D/g, '');
-  if (val.startsWith('8')) val = '7' + val.slice(1);
-  if (!val.startsWith('7')) val = '7' + val;
-  let formatted = '+7';
-  if (val.length > 1) formatted += ' (' + val.slice(1, 4);
-  if (val.length >= 5) formatted += ') ' + val.slice(4, 7);
-  if (val.length >= 8) formatted += '-' + val.slice(7, 9);
-  if (val.length >= 10) formatted += '-' + val.slice(9, 11);
-  e.target.value = formatted;
-});
-</script>
-
+        // Phone mask
+        document.getElementById('phone').addEventListener('input', function(e) {
+            let val = e.target.value.replace(/\D/g, '');
+            if (val.startsWith('8')) val = '7' + val.slice(1);
+            if (!val.startsWith('7')) val = '7' + val;
+            let formatted = '+7';
+            if (val.length > 1) formatted += ' (' + val.slice(1, 4);
+            if (val.length >= 5) formatted += ') ' + val.slice(4, 7);
+            if (val.length >= 8) formatted += '-' + val.slice(7, 9);
+            if (val.length >= 10) formatted += '-' + val.slice(9, 11);
+            e.target.value = formatted;
+        });
+    </script>
 </body>
 </html>
-```
