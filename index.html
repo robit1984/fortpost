@@ -6,21 +6,24 @@
     <title>Фортпост | Профессиональное трудоустройство</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-dark: #0A0F1E;
-            --bg-card: #131A30;
             --accent-gold: #FFD700;
-            --accent-gold-dark: #C9A700;
             --text-primary: #FFFFFF;
             --text-secondary: #A0A8B8;
             --text-tertiary: #C0C8D8;
-            --border: #1F2845;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
             --transition: all 0.4s ease;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         html { scroll-behavior: smooth; }
 
         body {
@@ -31,400 +34,580 @@
             overflow-x: hidden;
         }
 
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-
         /* Header */
         .header {
-            position: fixed; top: 0; left: 0; right: 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
             background-color: rgba(10, 15, 30, 0.95);
             backdrop-filter: blur(10px);
-            z-index: 1000; padding: 15px 0;
-            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            padding: 1rem 2rem;
+            border-bottom: 1px solid rgba(255, 215, 0, 0.1);
         }
+
         .header-content {
-            display: flex; justify-content: space-between; align-items: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            gap: 1.5rem;
+            flex-wrap: wrap;
         }
-        .logo { font-size: 1.6rem; font-weight: 800; color: var(--accent-gold); letter-spacing: 2px; }
-        
-        .nav-menu { display: flex; gap: 25px; }
-        .nav-menu a { color: var(--text-secondary); text-decoration: none; font-weight: 500; transition: var(--transition); font-size: 0.95rem; }
-        .nav-menu a:hover { color: var(--accent-gold); }
 
-        .header-phones { display: flex; flex-direction: column; align-items: flex-end; gap: 2px; }
-        .header-phones a { color: var(--text-primary); text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: var(--transition); }
-        .header-phones a:hover { color: var(--accent-gold); }
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--accent-gold);
+            letter-spacing: 2px;
+        }
 
-        .burger { display: none; background: none; border: none; color: var(--accent-gold); font-size: 1.8rem; cursor: pointer; }
+        .contacts-header {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .contact-item .icon {
+            color: var(--accent-gold);
+            margin-bottom: 0.2rem;
+        }
+
+        .contact-text {
+            font-size: 0.85rem;
+            color: var(--text-tertiary);
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .contact-text:hover { color: var(--accent-gold); }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-menu a:hover {
+            color: var(--accent-gold);
+        }
 
         /* Hero Section */
         .hero {
-            min-height: 100vh; display: flex; align-items: center; justify-content: center;
-            text-align: center; padding: 120px 20px 60px;
-            position: relative; overflow: hidden;
-            background: radial-gradient(circle at 50% 50%, rgba(255,215,0,0.05) 0%, transparent 60%), var(--bg-dark);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 8rem 2rem 2rem;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, rgba(10, 15, 30, 0.9), rgba(20, 30, 50, 0.8));
         }
+
         .hero::before {
-            content: ''; position: absolute; inset: 0;
-            background-image: linear-gradient(rgba(255,215,0,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,215,0,0.03) 1px, transparent 1px);
-            background-size: 50px 50px; mask-image: radial-gradient(circle at center, black 40%, transparent 80%);
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                radial-gradient(circle at 20% 30%, rgba(255, 215, 0, 0.05) 0.5px, transparent 0.5px),
+                linear-gradient(45deg, transparent 45%, rgba(255, 215, 0, 0.03) 50%, transparent 55%),
+                linear-gradient(-45deg, transparent 45%, rgba(255, 215, 0, 0.03) 50%, transparent 55%);
+            background-size: 60px 60px, 100px 100px, 150px 150px;
+            pointer-events: none;
         }
-        .hero-content { z-index: 2; max-width: 900px; }
-        .hero-label { display: inline-block; padding: 8px 20px; border: 1px solid var(--accent-gold); border-radius: 30px; color: var(--accent-gold); font-size: 0.8rem; letter-spacing: 2px; margin-bottom: 30px; text-transform: uppercase; }
-        .hero-number { font-size: clamp(3rem, 9vw, 7rem); font-weight: 800; color: var(--accent-gold); line-height: 1; margin-bottom: 10px; text-shadow: 0 0 40px rgba(255, 215, 0, 0.3); }
-        .hero-subtitle { font-size: 1.2rem; color: var(--text-secondary); margin-bottom: 20px; text-transform: uppercase; letter-spacing: 2px; }
-        .hero-text { font-size: clamp(1.1rem, 2vw, 1.4rem); color: var(--text-primary); margin-bottom: 40px; }
-        
+
+        .hero-content {
+            z-index: 2;
+            max-width: 800px;
+            position: relative;
+        }
+
+        .hero-number {
+            font-size: clamp(3rem, 8vw, 7rem);
+            font-weight: 700;
+            color: var(--accent-gold);
+            margin-bottom: 1rem;
+            line-height: 0.9;
+            letter-spacing: -0.02em;
+            text-shadow: 0 0 40px rgba(255, 215, 0, 0.3);
+        }
+
+        .hero-title {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .hero-text {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: var(--text-tertiary);
+        }
+
         .btn {
-            display: inline-block; background: linear-gradient(135deg, var(--accent-gold), var(--accent-gold-dark));
-            color: var(--bg-dark); padding: 18px 40px; border-radius: 4px; text-decoration: none;
-            font-weight: 700; font-size: 1rem; transition: var(--transition); border: none; cursor: pointer;
-            text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 10px 30px rgba(255,215,0,0.2);
+            display: inline-block;
+            background-color: var(--accent-gold);
+            color: var(--bg-dark);
+            padding: 1rem 2.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+            border: none;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
-        .btn:hover { transform: translateY(-3px); box-shadow: 0 15px 40px rgba(255,215,0,0.4); }
 
-        /* Sections General */
-        section { padding: 90px 0; }
-        .section-title { text-align: center; font-size: clamp(1.8rem, 4vw, 2.5rem); margin-bottom: 15px; font-weight: 800; }
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
+        }
+
+        /* Advantages Section */
+        .advantages {
+            padding: 6rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            margin-bottom: 4rem;
+            color: var(--text-primary);
+        }
+
         .section-title span { color: var(--accent-gold); }
-        .section-subtitle { text-align: center; color: var(--text-secondary); margin-bottom: 60px; font-size: 1.05rem; }
-        .bg-light { background-color: var(--bg-card); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
 
-        /* Advantages */
-        .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .card {
-            background: var(--bg-dark); padding: 40px 30px; border-radius: 8px; border: 1px solid var(--border);
-            text-align: center; transition: var(--transition); position: relative; overflow: hidden;
+        .advantages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
         }
-        .card:hover { transform: translateY(-8px); border-color: var(--accent-gold); box-shadow: 0 20px 50px rgba(0,0,0,0.4); }
-        .card-icon { font-size: 2.5rem; color: var(--accent-gold); margin-bottom: 20px; font-weight: 800; }
-        .card-title { font-size: 1.3rem; margin-bottom: 12px; color: var(--accent-gold); font-weight: 700; }
-        .card-text { color: var(--text-secondary); font-size: 0.98rem; }
 
-        /* Steps Section */
-        .steps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 30px; position: relative; }
-        .step { text-align: center; position: relative; z-index: 2; }
-        .step-num { 
-            width: 60px; height: 60px; background: var(--bg-dark); border: 2px solid var(--accent-gold); 
-            color: var(--accent-gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; 
-            font-size: 1.5rem; font-weight: 800; margin: 0 auto 20px; 
+        .advantage-card {
+            background-color: rgba(20, 30, 50, 0.5);
+            padding: 2rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent-gold);
+            transition: var(--transition);
+            text-align: center;
         }
-        .step h3 { font-size: 1.2rem; margin-bottom: 10px; }
-        .step p { color: var(--text-secondary); font-size: 0.95rem; }
 
-        /* Regions */
-        .regions-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-        .region {
-            background: var(--bg-card); padding: 25px 30px; border-radius: 6px; border-left: 3px solid var(--accent-gold);
-            display: flex; justify-content: space-between; align-items: center; transition: var(--transition);
+        .advantage-card:hover {
+            transform: translateY(-5px);
+            background-color: rgba(20, 30, 50, 0.7);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
         }
-        .region:hover { background: #1B2342; transform: translateX(5px); }
-        .region-name { font-size: 1.1rem; font-weight: 600; }
-        .region-amount { color: var(--accent-gold); font-size: 1.2rem; font-weight: 800; white-space: nowrap; }
 
-        /* Counters */
-        .counters { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; text-align: center; padding: 60px 0; }
-        .counter-item { background: var(--bg-card); padding: 30px; border-radius: 8px; border: 1px solid var(--border); }
-        .count { font-size: 3rem; font-weight: 800; color: var(--accent-gold); display: block; line-height: 1; }
-        .count-label { color: var(--text-secondary); margin-top: 10px; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; }
+        .advantage-number {
+            font-size: 2.2rem;
+            color: var(--accent-gold);
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
 
-        /* Reviews */
-        .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .review { background: var(--bg-card); padding: 30px; border-radius: 8px; border: 1px solid var(--border); }
-        .review-header { display: flex; align-items: center; gap: 15px; margin-bottom: 15px; }
-        .review-avatar { width: 50px; height: 50px; background: var(--border); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--accent-gold); font-weight: 700; font-size: 1.2rem; }
-        .review-name { font-weight: 700; font-size: 1.1rem; }
-        .review-role { color: var(--text-secondary); font-size: 0.85rem; }
-        .review-text { color: var(--text-tertiary); font-style: italic; font-size: 0.95rem; }
+        .advantage-card p {
+            color: var(--text-tertiary);
+        }
 
-        /* FAQ */
-        .faq-list { max-width: 850px; margin: 0 auto; }
-        .faq-item { background: var(--bg-card); margin-bottom: 15px; border-radius: 6px; border: 1px solid var(--border); overflow: hidden; transition: var(--transition); }
-        .faq-item:hover { border-color: rgba(255, 215, 0, 0.5); }
-        .faq-question { padding: 22px 28px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: 600; font-size: 1.05rem; user-select: none; }
-        .faq-toggle { color: var(--accent-gold); font-size: 1.5rem; transition: transform 0.3s; }
-        .faq-item.active .faq-toggle { transform: rotate(45deg); }
-        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.4s ease; padding: 0 28px; color: var(--text-secondary); }
-        .faq-item.active .faq-answer { max-height: 200px; padding: 0 28px 22px; }
+        /* Salaries Section */
+        .salaries {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto 4rem;
+            background-color: rgba(20, 30, 50, 0.3);
+            border-radius: 12px;
+        }
 
-        /* Form */
-        .form { max-width: 600px; margin: 0 auto; background: var(--bg-card); padding: 45px 40px; border-radius: 10px; border: 1px solid var(--border); box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
-        .form-group { margin-bottom: 20px; }
-        .form-group label { display: block; margin-bottom: 8px; color: var(--text-secondary); font-size: 0.9rem; }
-        .form-group input, .form-group select { width: 100%; padding: 14px 16px; background: var(--bg-dark); border: 1px solid var(--border); border-radius: 5px; color: var(--text-primary); font-size: 1rem; font-family: inherit; transition: var(--transition); }
-        .form-group input:focus, .form-group select:focus { outline: none; border-color: var(--accent-gold); }
-        .form-group select option { background: var(--bg-dark); }
-        .checkbox-group { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 25px; }
-        .checkbox-group input { width: 18px; height: 18px; margin-top: 3px; accent-color: var(--accent-gold); cursor: pointer; flex-shrink: 0; }
-        .checkbox-group label { color: var(--text-secondary); font-size: 0.88rem; cursor: pointer; line-height: 1.5; }
-        .form .btn { width: 100%; }
+        .salaries-title {
+            text-align: center;
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            margin-bottom: 2rem;
+        }
 
-        /* Contacts */
-        .contacts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 25px; max-width: 900px; margin: 0 auto; }
-        .contact-card { background: var(--bg-card); padding: 35px 25px; border-radius: 8px; border: 1px solid var(--border); text-align: center; transition: var(--transition); }
-        .contact-card:hover { border-color: var(--accent-gold); transform: translateY(-5px); }
-        .contact-label { color: var(--text-secondary); font-size: 0.85rem; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 10px; }
-        .contact-value { color: var(--accent-gold); font-size: 1.2rem; font-weight: 700; text-decoration: none; display: block; }
-        .contact-value:hover { color: var(--text-primary); }
+        .salaries-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
+        }
+
+        .salary-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 1.5rem;
+            background-color: rgba(30, 40, 60, 0.5);
+            border-radius: 8px;
+            font-size: 1.05rem;
+            border-left: 3px solid var(--accent-gold);
+            transition: var(--transition);
+        }
+
+        .salary-item:hover {
+            background-color: rgba(30, 40, 60, 0.8);
+            transform: translateX(5px);
+        }
+
+        .salary-highlight {
+            font-weight: 700;
+            color: var(--accent-gold);
+            white-space: nowrap;
+        }
+
+        /* FAQ Section */
+        .faq {
+            padding: 6rem 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background-color: rgba(20, 30, 50, 0.5);
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            padding: 1.5rem;
+            border: 1px solid rgba(255, 215, 0, 0.1);
+            transition: var(--transition);
+        }
+
+        .faq-item:hover { border-color: rgba(255, 215, 0, 0.4); }
+
+        .faq-question {
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+        }
+
+        .faq-toggle {
+            color: var(--accent-gold);
+            font-size: 1.5rem;
+            transition: transform 0.3s;
+        }
+
+        .faq-item.open .faq-toggle { transform: rotate(45deg); }
+
+        .faq-answer {
+            display: none;
+            color: var(--text-tertiary);
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 215, 0, 0.1);
+        }
+
+        .faq-item.open .faq-answer { display: block; }
+
+        /* Application Form */
+        .application {
+            padding: 4rem 2rem;
+            max-width: 700px;
+            margin: 0 auto 4rem;
+            background-color: rgba(20, 30, 50, 0.3);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 215, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .form-input,
+        .form-select {
+            width: 100%;
+            padding: 1rem;
+            background-color: rgba(30, 40, 60, 0.7);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            border-radius: 4px;
+            color: var(--text-primary);
+            font-size: 1rem;
+            font-family: inherit;
+            transition: var(--transition);
+        }
+
+        .form-input:focus,
+        .form-select:focus {
+            outline: none;
+            border-color: var(--accent-gold);
+        }
+
+        .form-select { cursor: pointer; }
+        .form-select option { background-color: var(--bg-dark); }
+
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            margin-top: 0.3rem;
+            width: 18px;
+            height: 18px;
+            accent-color: var(--accent-gold);
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+
+        .checkbox-group label {
+            color: var(--text-tertiary);
+            font-size: 0.9rem;
+            cursor: pointer;
+        }
+
+        .application .btn { width: 100%; }
+
+        /* Contacts Section */
+        .contacts-section {
+            padding: 6rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contacts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-card {
+            background-color: rgba(20, 30, 50, 0.5);
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid rgba(255, 215, 0, 0.1);
+            transition: var(--transition);
+        }
+
+        .contact-card:hover {
+            border-color: var(--accent-gold);
+            transform: translateY(-5px);
+        }
+
+        .contact-icon {
+            color: var(--accent-gold);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-card a {
+            color: var(--accent-gold);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            display: block;
+            margin-top: 0.5rem;
+        }
+
+        .contact-card a:hover { color: var(--text-primary); }
+
+        .contact-label {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
 
         /* Footer */
-        footer { background: #060A18; padding: 30px 0; text-align: center; border-top: 1px solid var(--border); color: var(--text-secondary); font-size: 0.9rem; }
-
-        /* Back to Top */
-        #backToTop {
-            position: fixed; bottom: 30px; right: 30px; width: 50px; height: 50px;
-            background: var(--accent-gold); color: var(--bg-dark); border: none; border-radius: 50%;
-            font-size: 1.5rem; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center;
-            opacity: 0; visibility: hidden; transition: var(--transition); z-index: 999; box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        .footer {
+            background-color: rgba(6, 10, 24, 0.9);
+            padding: 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(255, 215, 0, 0.1);
         }
-        #backToTop.show { opacity: 1; visibility: visible; }
-        #backToTop:hover { transform: translateY(-5px); }
 
-        /* Toast Notification */
-        .toast-container { position: fixed; bottom: 30px; left: 30px; z-index: 999; display: flex; flex-direction: column; gap: 10px; }
-        .toast {
-            background: var(--bg-card); border: 1px solid var(--accent-gold); border-left: 4px solid var(--accent-gold);
-            padding: 15px 20px; border-radius: 4px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            display: flex; align-items: center; gap: 15px; min-width: 300px;
-            animation: slideIn 0.5s ease forwards;
+        .footer-text {
+            color: var(--text-tertiary);
+            font-size: 0.9rem;
         }
-        .toast.hiding { animation: slideOut 0.5s ease forwards; }
-        .toast-icon { font-size: 1.5rem; }
-        .toast-content { font-size: 0.9rem; }
-        .toast-content strong { color: var(--accent-gold); display: block; margin-bottom: 2px; }
-        .toast-content span { color: var(--text-secondary); font-size: 0.8rem; }
-
-        @keyframes slideIn { from { transform: translateX(-100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
-        @keyframes slideOut { from { transform: translateX(0); opacity: 1; } to { transform: translateX(-100%); opacity: 0; } }
 
         /* Animations */
-        .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
-        .fade-in.visible { opacity: 1; transform: translateY(0); }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .delay-1 { transition-delay: 0.1s; }
+        .delay-2 { transition-delay: 0.3s; }
+        .delay-3 { transition-delay: 0.5s; }
 
         /* Responsive */
-        @media (max-width: 992px) {
-            .header-phones { display: none; }
-        }
         @media (max-width: 768px) {
-            .burger { display: block; }
-            .nav-menu {
-                position: fixed; top: 65px; left: 0; right: 0; background: var(--bg-card);
-                flex-direction: column; align-items: center; padding: 30px 0; gap: 20px;
-                border-bottom: 1px solid var(--border); transform: translateY(-150%); transition: transform 0.4s ease;
-            }
-            .nav-menu.active { transform: translateY(0); }
-            .hero { padding-top: 150px; }
-            .form { padding: 30px 20px; }
-            .toast-container { left: 10px; right: 10px; bottom: 10px; }
-            .toast { min-width: auto; width: 100%; }
+            .header-content { justify-content: center; }
+            .nav-menu { gap: 1rem; font-size: 0.9rem; flex-wrap: wrap; justify-content: center; }
+            .hero { padding-top: 12rem; }
+            .application { padding: 2rem 1.5rem; }
         }
     </style>
 </head>
 <body>
 
-<header class="header">
-    <div class="container header-content">
-        <div class="logo">ФОРТПОСТ</div>
-        <nav class="nav-menu" id="navMenu">
-            <a href="#about">О нас</a>
-            <a href="#steps">Этапы</a>
-            <a href="#payments">Выплаты</a>
-            <a href="#reviews">Отзывы</a>
-            <a href="#faq">FAQ</a>
-            <a href="#contacts">Контакты</a>
-        </nav>
-        <div class="header-phones">
-            <a href="tel:+70000000000">+7 XXX XXX-XX-XX</a>
-            <a href="tel:+70000000000">+7 XXX XXX-XX-XX</a>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">ФОРТПОСТ</div>
+            <div class="contacts-header">
+                <div class="contact-item">
+                    <div class="icon">📞</div>
+                    <a href="tel:+79119210797" class="contact-text">+7 911 921-07-97</a>
+                </div>
+                <div class="contact-item">
+                    <div class="icon">📞</div>
+                    <a href="tel:+79160187572" class="contact-text">+7 916 018-75-72</a>
+                </div>
+            </div>
+            <nav class="nav-menu">
+                <a href="#about">О нас</a>
+                <a href="#salaries">Выплаты</a>
+                <a href="#specialties">Специальности</a>
+                <a href="#contacts">Контакты</a>
+            </nav>
         </div>
-        <button class="burger" id="burgerBtn">☰</button>
-    </div>
-</header>
+    </header>
 
-<section class="hero">
-    <div class="hero-content">
-        <div class="hero-label fade-in">Официальное трудоустройство</div>
-        <div class="hero-number fade-in">4 500 000 ₽</div>
-        <div class="hero-subtitle fade-in">единовременная выплата</div>
-        <div class="hero-text fade-in">Зарплата от <strong style="color:var(--accent-gold)">210 000 ₽</strong> + полный социальный пакет</div>
-        <a href="#form" class="btn fade-in">Оставить заявку</a>
-    </div>
-</section>
+    <!-- Hero -->
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <div class="hero-number fade-in delay-1">4 500 000 ₽</div>
+            <div class="hero-title fade-in delay-2">единовременная выплата</div>
+            <div class="hero-text fade-in delay-3">Зарплата от <strong style="color:var(--accent-gold)">210 000 ₽</strong> + полный социальный пакет</div>
+            <a href="#application" class="btn fade-in delay-3">Оставить заявку</a>
+        </div>
+    </section>
 
-<section class="bg-light" id="about">
-    <div class="container">
+    <!-- Advantages -->
+    <section class="advantages" id="about">
         <h2 class="section-title fade-in">Наши <span>преимущества</span></h2>
-        <p class="section-subtitle fade-in">Гарантии и надежность</p>
-        <div class="cards">
-            <div class="card fade-in">
-                <div class="card-icon">4.5 млн ₽</div>
-                <div class="card-title">Единовременная выплата</div>
-                <div class="card-text">При подписании контракта — гарантированная выплата на руки</div>
+        <div class="advantages-grid">
+            <div class="advantage-card fade-in delay-1">
+                <div class="advantage-number">4.5 млн ₽</div>
+                <p>Единовременная выплата при подписании контракта</p>
             </div>
-            <div class="card fade-in">
-                <div class="card-icon">★</div>
-                <div class="card-title">Социальный пакет</div>
-                <div class="card-text">Жильё, льготная ипотека, медицина, страхование, льготы для семьи</div>
+            <div class="advantage-card fade-in delay-2">
+                <div class="advantage-number">🏡</div>
+                <p>Социальный пакет: жильё, льготная ипотека, медицина</p>
             </div>
-            <div class="card fade-in">
-                <div class="card-icon">✓</div>
-                <div class="card-title">Востребованные специальности</div>
-                <div class="card-text">Водители, операторы БПЛА, связисты, медики и другие направления</div>
+            <div class="advantage-card fade-in delay-3">
+                <div class="advantage-number">🛠️</div>
+                <p>Широкий спектр специальностей: водители, операторы БПЛА, связисты, медики</p>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<section id="steps">
-    <div class="container">
-        <h2 class="section-title fade-in">Этапы <span>оформления</span></h2>
-        <p class="section-subtitle fade-in">Простой и быстрый путь к трудоустройству</p>
-        <div class="steps-grid">
-            <div class="step fade-in">
-                <div class="step-num">01</div>
-                <h3>Заявка</h3>
-                <p>Оставляете заявку на сайте или звоните нам</p>
+    <!-- Salaries -->
+    <section class="salaries" id="salaries">
+        <h2 class="salaries-title">Единовременные выплаты <span style="color:var(--accent-gold)">по регионам</span></h2>
+        <div class="salaries-grid">
+            <div class="salary-item"><span>Москва</span><span class="salary-highlight">2 560 000 ₽</span></div>
+            <div class="salary-item"><span>Санкт-Петербург</span><span class="salary-highlight">4 500 000 ₽</span></div>
+            <div class="salary-item"><span>Краснодар</span><span class="salary-highlight">3 400 000 ₽</span></div>
+            <div class="salary-item"><span>Татарстан</span><span class="salary-highlight">2 900 000 ₽</span></div>
+            <div class="salary-item"><span>Нижний Новгород</span><span class="salary-highlight">2 100 000 ₽</span></div>
+            <div class="salary-item"><span>Тула</span><span class="salary-highlight">2 000 000 ₽</span></div>
+        </div>
+    </section>
+
+    <!-- Specialties -->
+    <section class="advantages" id="specialties">
+        <h2 class="section-title fade-in">Открытые <span>специальности</span></h2>
+        <div class="advantages-grid">
+            <div class="advantage-card fade-in delay-1">
+                <div class="advantage-number">🚗</div>
+                <p>Водители различных категорий</p>
             </div>
-            <div class="step fade-in">
-                <div class="step-num">02</div>
-                <h3>Консультация</h3>
-                <p>Наш специалист подбирает подходящую специальность</p>
+            <div class="advantage-card fade-in delay-2">
+                <div class="advantage-number">🛸</div>
+                <p>Операторы БПЛА и наземных комплексов</p>
             </div>
-            <div class="step fade-in">
-                <div class="step-num">03</div>
-                <h3>Документы</h3>
-                <p>Собираем пакет документов (занимает 1-3 дня)</p>
+            <div class="advantage-card fade-in delay-3">
+                <div class="advantage-number">📡</div>
+                <p>Связисты и операторы систем связи</p>
             </div>
-            <div class="step fade-in">
-                <div class="step-num">04</div>
-                <h3>Выплата</h3>
-                <p>Подписание контракта и получение единовременной выплаты</p>
+            <div class="advantage-card fade-in delay-3">
+                <div class="advantage-number">⚕️</div>
+                <p>Медики и санитарный персонал</p>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<section class="bg-light" id="payments">
-    <div class="container">
-        <h2 class="section-title fade-in">Выплаты по <span>регионам</span></h2>
-        <p class="section-subtitle fade-in">Размер единовременной выплаты в вашем регионе</p>
-        <div class="regions-grid">
-            <div class="region fade-in"><span class="region-name">Москва</span><span class="region-amount">2 560 000 ₽</span></div>
-            <div class="region fade-in"><span class="region-name">Санкт-Петербург</span><span class="region-amount">4 500 000 ₽</span></div>
-            <div class="region fade-in"><span class="region-name">Краснодар</span><span class="region-amount">3 400 000 ₽</span></div>
-            <div class="region fade-in"><span class="region-name">Татарстан</span><span class="region-amount">2 900 000 ₽</span></div>
-            <div class="region fade-in"><span class="region-name">Нижний Новгород</span><span class="region-amount">2 100 000 ₽</span></div>
-            <div class="region fade-in"><span class="region-name">Тула</span><span class="region-amount">2 000 000 ₽</span></div>
-        </div>
-    </div>
-</section>
-
-<section id="stats">
-    <div class="container">
-        <div class="counters">
-            <div class="counter-item fade-in">
-                <span class="count" data-target="1540">0</span>
-                <div class="count-label">Трудоустроено</div>
-            </div>
-            <div class="counter-item fade-in">
-                <span class="count" data-target="3200">0</span>
-                <div class="count-label">Млн ₽ выплачено</div>
-            </div>
-            <div class="counter-item fade-in">
-                <span class="count" data-target="98">0</span>
-                <div class="count-label">% довольных клиентов</div>
-            </div>
-            <div class="counter-item fade-in">
-                <span class="count" data-target="24">0</span>
-                <div class="count-label">Часа поддержка</div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="bg-light" id="reviews">
-    <div class="container">
-        <h2 class="section-title fade-in">Отзывы <span>сотрудников</span></h2>
-        <p class="section-subtitle fade-in">Реальные истории людей, которые уже с нами</p>
-        <div class="reviews-grid">
-            <div class="review fade-in">
-                <div class="review-header">
-                    <div class="review-avatar">А</div>
-                    <div>
-                        <div class="review-name">Алексей М.</div>
-                        <div class="review-role">Водитель, г. Тула</div>
-                    </div>
-                </div>
-                <div class="review-text">«Оформили за 2 дня. Выплату получил сразу на карту. Условия полностью соответствуют тому, что обещали в агентстве.»</div>
-            </div>
-            <div class="review fade-in">
-                <div class="review-header">
-                    <div class="review-avatar">Д</div>
-                    <div>
-                        <div class="review-name">Дмитрий К.</div>
-                        <div class="review-role">Связист, г. Краснодар</div>
-                    </div>
-                </div>
-                <div class="review-text">«Опыт не требовался, всему обучили на месте. Жилье предоставили сразу по приезду. Спасибо Фортпост за помощь!»</div>
-            </div>
-            <div class="review fade-in">
-                <div class="review-header">
-                    <div class="review-avatar">С</div>
-                    <div>
-                        <div class="review-name">Сергей В.</div>
-                        <div class="review-role">Медик, г. Москва</div>
-                    </div>
-                </div>
-                <div class="review-text">«Зарплата приходит вовремя, без задержек. Соцпакет реально работает, помогли с документами для семьи.»</div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section id="faq">
-    <div class="container">
+    <!-- FAQ -->
+    <section class="faq" id="faq">
         <h2 class="section-title fade-in">Часто задаваемые <span>вопросы</span></h2>
-        <p class="section-subtitle fade-in">Ответы на самые популярные вопросы</p>
-        <div class="faq-list">
-            <div class="faq-item fade-in">
-                <div class="faq-question">Нужен ли опыт работы?<span class="faq-toggle">+</span></div>
-                <div class="faq-answer"><p>Нет, опыт не обязателен. Мы предоставляем полное обучение по всем направлениям.</p></div>
-            </div>
-            <div class="faq-item fade-in">
-                <div class="faq-question">Можно, если не служил?<span class="faq-toggle">+</span></div>
-                <div class="faq-answer"><p>Да, можно. Отсутствие службы в армии не является препятствием для трудоустройства.</p></div>
-            </div>
-            <div class="faq-item fade-in">
-                <div class="faq-question">Какие документы нужны?<span class="faq-toggle">+</span></div>
-                <div class="faq-answer"><p>Паспорт, СНИЛС, ИНН, военный билет (если есть). Полный список документов уточнит наш специалист.</p></div>
-            </div>
-            <div class="faq-item fade-in">
-                <div class="faq-question">Помогаете иногородним?<span class="faq-toggle">+</span></div>
-                <div class="faq-answer"><p>Да, мы компенсируем стоимость проезда и предоставляем жильё на время оформления.</p></div>
-            </div>
-            <div class="faq-item fade-in">
-                <div class="faq-question">Как быстро можно оформиться?<span class="faq-toggle">+</span></div>
-                <div class="faq-answer"><p>Полное оформление занимает от 1 до 3 дней при наличии всех необходимых документов.</p></div>
-            </div>
+        <div class="faq-item fade-in">
+            <div class="faq-question">Нужен ли опыт работы?<span class="faq-toggle">+</span></div>
+            <div class="faq-answer">Нет, опыт не обязателен. Мы проводим полное обучение по всем направлениям.</div>
         </div>
-    </div>
-</section>
+        <div class="faq-item fade-in">
+            <div class="faq-question">Можно, если не служил?<span class="faq-toggle">+</span></div>
+            <div class="faq-answer">Да, можно. Отсутствие службы в армии не является препятствием.</div>
+        </div>
+        <div class="faq-item fade-in">
+            <div class="faq-question">Какие документы нужны?<span class="faq-toggle">+</span></div>
+            <div class="faq-answer">Паспорт, СНИЛС, ИНН, военный билет (если есть). Полный список уточнит наш специалист.</div>
+        </div>
+        <div class="faq-item fade-in">
+            <div class="faq-question">Помогаете иногородним?<span class="faq-toggle">+</span></div>
+            <div class="faq-answer">Да, мы компенсируем стоимость проезда и предоставляем жильё на время оформления.</div>
+        </div>
+        <div class="faq-item fade-in">
+            <div class="faq-question">Как быстро можно оформиться?<span class="faq-toggle">+</span></div>
+            <div class="faq-answer">Полное оформление занимает от 1 до 3 дней при наличии всех документов.</div>
+        </div>
+    </section>
 
-<section class="bg-light" id="form">
-    <div class="container">
+    <!-- Application Form -->
+    <section class="application" id="application">
         <h2 class="section-title fade-in">Оставить <span>заявку</span></h2>
-        <p class="section-subtitle fade-in">Перезвоним в течение 15 минут</p>
-        <form class="form fade-in" id="applicationForm">
+        <form id="applicationForm">
             <div class="form-group">
                 <label for="name">ФИО *</label>
-                <input type="text" id="name" name="name" required placeholder="Иванов Иван Иванович">
+                <input type="text" id="name" class="form-input" required placeholder="Иванов Иван Иванович">
             </div>
             <div class="form-group">
                 <label for="phone">Телефон *</label>
-                <input type="tel" id="phone" name="phone" required placeholder="+7 (___) ___-__-__">
+                <input type="tel" id="phone" class="form-input" required placeholder="+7 (___) ___-__-__">
             </div>
             <div class="form-group">
                 <label for="region">Регион *</label>
-                <select id="region" name="region" required>
+                <select id="region" class="form-select" required>
                     <option value="">Выберите регион</option>
                     <option>Москва</option>
                     <option>Санкт-Петербург</option>
@@ -435,7 +618,7 @@
             </div>
             <div class="form-group">
                 <label for="specialty">Специальность *</label>
-                <select id="specialty" name="specialty" required>
+                <select id="specialty" class="form-select" required>
                     <option value="">Выберите специальность</option>
                     <option>Водитель</option>
                     <option>Оператор БПЛА</option>
@@ -446,178 +629,87 @@
             </div>
             <div class="checkbox-group">
                 <input type="checkbox" id="consent" required>
-                <label for="consent">Я даю согласие на обработку персональных данных в соответствии с Федеральным законом № 152-ФЗ</label>
+                <label for="consent">Я даю согласие на обработку персональных данных в соответствии с ФЗ № 152-ФЗ</label>
             </div>
             <button type="submit" class="btn">Отправить заявку</button>
         </form>
-    </div>
-</section>
+    </section>
 
-<section id="contacts">
-    <div class="container">
+    <!-- Contacts -->
+    <section class="contacts-section" id="contacts">
         <h2 class="section-title fade-in">Наши <span>контакты</span></h2>
-        <p class="section-subtitle fade-in">Свяжитесь с нами удобным способом</p>
         <div class="contacts-grid">
-            <div class="contact-card fade-in">
+            <div class="contact-card fade-in delay-1">
+                <div class="contact-icon">📞</div>
                 <div class="contact-label">Телефон 1</div>
-                <a href="tel:+70000000000" class="contact-value">+7 XXX XXX-XX-XX</a>
+                <a href="tel:+79119210797">+7 911 921-07-97</a>
             </div>
-            <div class="contact-card fade-in">
+            <div class="contact-card fade-in delay-1">
+                <div class="contact-icon">📞</div>
                 <div class="contact-label">Телефон 2</div>
-                <a href="tel:+70000000000" class="contact-value">+7 XXX XXX-XX-XX</a>
+                <a href="tel:+79160187572">+7 916 018-75-72</a>
             </div>
-            <div class="contact-card fade-in">
+            <div class="contact-card fade-in delay-2">
+                <div class="contact-icon">✈️</div>
                 <div class="contact-label">Telegram</div>
-                <a href="#" class="contact-value">@fortpost</a>
+                <a href="https://t.me/Maria_Solnce" target="_blank">@Maria_Solnce</a>
             </div>
-            <div class="contact-card fade-in">
-                <div class="contact-label">Сайт</div>
-                <a href="#" class="contact-value">fortpost.ru</a>
+            <div class="contact-card fade-in delay-3">
+                <div class="contact-icon">💬</div>
+                <div class="contact-label">ВКонтакте / Telegram</div>
+                <a href="tel:+79112145348">+7 911 214-53-48</a>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<footer>
-    <div class="container">
-        © 2026, Кадровое агентство «Фортпост». Все права защищены.
-    </div>
-</footer>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-text">© 2026, Кадровое агентство «Фортпост». Все права защищены.</div>
+    </footer>
 
-<button id="backToTop">↑</button>
-<div class="toast-container" id="toastContainer"></div>
-
-<script>
-    // Mobile Menu
-    const burgerBtn = document.getElementById('burgerBtn');
-    const navMenu = document.getElementById('navMenu');
-    burgerBtn.addEventListener('click', () => {
-        navMenu.classList.toggle('active');
-        burgerBtn.textContent = navMenu.classList.contains('active') ? '✕' : '☰';
-    });
-    navMenu.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-            navMenu.classList.remove('active');
-            burgerBtn.textContent = '☰';
-        });
-    });
-
-    // FAQ
-    document.querySelectorAll('.faq-question').forEach(q => {
-        q.addEventListener('click', () => {
-            const item = q.parentElement;
-            const wasActive = item.classList.contains('active');
-            document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
-            if (!wasActive) item.classList.add('active');
-        });
-    });
-
-    // Form
-    document.getElementById('applicationForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        const consent = document.getElementById('consent');
-        if (!consent.checked) {
-            alert('Необходимо согласие на обработку персональных данных');
-            return;
-        }
-        alert('Спасибо! Ваша заявка принята. Мы свяжемся с вами в течение 15 минут.');
-        this.reset();
-    });
-
-    // Fade-in on scroll & Counters
-    const observerOptions = { threshold: 0.2 };
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-                
-                // Counter Animation
-                if(entry.target.classList.contains('counter-item')) {
-                    const countElement = entry.target.querySelector('.count');
-                    const target = +countElement.getAttribute('data-target');
-                    let count = 0;
-                    const updateCount = () => {
-                        const increment = target / 100;
-                        if(count < target) {
-                            count += increment;
-                            countElement.innerText = Math.ceil(count);
-                            setTimeout(updateCount, 20);
-                        } else {
-                            countElement.innerText = target;
-                        }
-                    };
-                    updateCount();
-                    // Stop observing once animated
-                    observer.unobserve(entry.target);
-                }
-            }
-        });
-    }, observerOptions);
-
-    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
-    // Back to Top
-    const backToTopBtn = document.getElementById('backToTop');
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 500) {
-            backToTopBtn.classList.add('show');
-        } else {
-            backToTopBtn.classList.remove('show');
-        }
-    });
-    backToTopBtn.addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-
-    // Phone mask
-    document.getElementById('phone').addEventListener('input', function(e) {
-        let val = e.target.value.replace(/\D/g, '');
-        if (val.startsWith('8')) val = '7' + val.slice(1);
-        if (!val.startsWith('7')) val = '7' + val;
-        let formatted = '+7';
-        if (val.length > 1) formatted += ' (' + val.slice(1, 4);
-        if (val.length >= 5) formatted += ') ' + val.slice(4, 7);
-        if (val.length >= 8) formatted += '-' + val.slice(7, 9);
-        if (val.length >= 10) formatted += '-' + val.slice(9, 11);
-        e.target.value = formatted;
-    });
-
-    // Toast Notifications
-    const toastContainer = document.getElementById('toastContainer');
-    const names = ["Алексей", "Дмитрий", "Иван", "Сергей", "Андрей", "Михаил", "Олег"];
-    const cities = ["Москвы", "Казани", "Тулы", "Краснодара", "Санкт-Петербурга", "Нижнего Новгорода"];
-    const specs = ["водитель", "связист", "оператор БПЛА", "медик"];
-
-    function showToast() {
-        const name = names[Math.floor(Math.random() * names.length)];
-        const city = cities[Math.floor(Math.random() * cities.length)];
-        const spec = specs[Math.floor(Math.random() * specs.length)];
-        
-        const toast = document.createElement('div');
-        toast.className = 'toast';
-        toast.innerHTML = `
-            <div class="toast-icon">✅</div>
-            <div class="toast-content">
-                <strong>${name} из ${city}</strong>
-                <span>только что оставил заявку (${spec})</span>
-            </div>
-        `;
-        
-        toastContainer.appendChild(toast);
-        
-        setTimeout(() => {
-            toast.classList.add('hiding');
-            toast.addEventListener('animationend', () => {
-                toast.remove();
+    <script>
+        // FAQ accordion
+        document.querySelectorAll('.faq-question').forEach(q => {
+            q.addEventListener('click', () => {
+                const item = q.parentElement;
+                const wasOpen = item.classList.contains('open');
+                document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+                if (!wasOpen) item.classList.add('open');
             });
-        }, 4000);
-    }
+        });
 
-    // Show first toast after 5 seconds, then every 15 seconds
-    setTimeout(showToast, 5000);
-    setInterval(showToast, 15000);
-</script>
+        // Form
+        document.getElementById('applicationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            if (!document.getElementById('consent').checked) {
+                alert('Необходимо согласие на обработку персональных данных');
+                return;
+            }
+            alert('Спасибо! Ваша заявка принята. Мы свяжемся с вами в течение 15 минут.');
+            this.reset();
+        });
 
+        // Fade-in on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // Phone mask
+        document.getElementById('phone').addEventListener('input', function(e) {
+            let val = e.target.value.replace(/\D/g, '');
+            if (val.startsWith('8')) val = '7' + val.slice(1);
+            if (!val.startsWith('7')) val = '7' + val;
+            let formatted = '+7';
+            if (val.length > 1) formatted += ' (' + val.slice(1, 4);
+            if (val.length >= 5) formatted += ') ' + val.slice(4, 7);
+            if (val.length >= 8) formatted += '-' + val.slice(7, 9);
+            if (val.length >= 10) formatted += '-' + val.slice(9, 11);
+            e.target.value = formatted;
+        });
+    </script>
 </body>
 </html>
-```
